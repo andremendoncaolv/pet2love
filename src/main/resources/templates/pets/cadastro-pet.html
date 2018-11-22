@@ -11,7 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="/layout/stylesheets/pet2love.min.css" />
 	<link rel="stylesheet" type="text/css" href="/layout/stylesheets/cadastro-pets.css"/>
 
-	D<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -147,10 +147,10 @@
 								<label for="especieAnimal">Especie Animal</label>
 
 								<select id="especieAnimal" class="form-control"
-								 	th:field="*{especieAnimal}">
+								 	th:field="*{especieAnimal}" onchange="funcao(especieAnimal.value)">
 									<option value="">Selecione a espécie</option>
-									<option th:each="especieAnimal: ${especie}"
-										th:value="${especieAnimal}" th:text="${especieAnimal.descricao}" ></option>
+									<option th:each="especieAnimal: ${especie}" 
+										th:value="${especieAnimal}" th:text="${especieAnimal.descricao}"></option>
 								</select>
 							</div>
 						</div>
@@ -172,7 +172,7 @@
 					
 					<div class="row">
 						
-						  <div class="col-sm-6">
+						  <div id="divCao" class="col-sm-6" style="display:none">
 							<div class="form-group">
 								<label for="raca">Raça</label>
 								<select id="raca" class="form-control"
@@ -183,6 +183,18 @@
 								</select>
 							</div>
 						</div> 
+						
+					 <div id="divGato" class="col-sm-6" style="display:none">
+							<div class="form-group">
+								<label for="raca">Raça Gato</label>
+								<select id="racaGato" class="form-control" 
+								 	th:field="*{raca}">
+									<option value="">Selecione a raça do Pet</option>
+									<option th:each="raca: ${racasGato}"
+										th:value="${raca}" th:text="${raca.descricao}"></option>
+								</select>
+							</div>
+					</div>
 						
 						<div class="col-sm-6">
 							<label for="idadeAnimal">Idade do Pet</label>
@@ -215,5 +227,22 @@
 	<script>
 		jQuery('.js-moeda').mask("#.##0,00", { reverse: true });
 	</script>
+	
+	
+	<script type="text/javascript">
+	
+		function funcao(especieAnimal){
+			if(especieAnimal == 'CAO'){
+				document.getElementById('divCao').style.display = 'block';
+				document.getElementById('divGato').style.display = 'none';
+			}else{
+				document.getElementById('divGato').style.display = 'block';
+				document.getElementById('divCao').style.display = 'none';
+			}
+		}
+
+	</script>
+	
+	
 </body>
 </html>

@@ -15,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.com.pet2love.model.EspecieAnimal;
 import br.com.pet2love.model.Pet;
 import br.com.pet2love.model.Raca;
+import br.com.pet2love.model.RacaGato;
 import br.com.pet2love.model.SexoAnimal;
 import br.com.pet2love.repository.PetsRepository;
 
@@ -75,6 +76,16 @@ public class PetController {
 	public Raca[] getRaca() {
 		return Raca.values();
 	}
+	
+	@ModelAttribute("racasGato")
+	public RacaGato[] getRacaGato() {
+		return RacaGato.values();
+	}
+	
+	public void funcao(String especie) {
+		System.out.println(especie);
+	}
+	
 	/*@GetMapping
 	public ModelAndView listarPets() {
 		ModelAndView modelAndView =  new ModelAndView("pets/lista-pets");

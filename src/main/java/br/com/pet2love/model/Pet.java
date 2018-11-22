@@ -57,6 +57,10 @@ public class Pet implements Serializable{
 	@Enumerated(EnumType.STRING)
 	private Raca raca;
 	
+	@Column(name = "RACA_GATO")
+	@Enumerated(EnumType.STRING)
+	private RacaGato racagGato;
+	
 	public Pet() {
 		super();
 	}
@@ -180,4 +184,13 @@ public class Pet implements Serializable{
 	public void setSexoAnimal(SexoAnimal sexoAnimal) {
 		this.sexoAnimal = sexoAnimal;
 	}
+
+	public RacaGato getRacagGato() {
+		return racagGato;
+	}
+
+	public void setRacagGato(RacaGato racagGato) {
+		this.racagGato = racagGato;
+	}
+	
 }
